@@ -159,6 +159,9 @@ export default Ember.Object.extend({
       if (this.file.status === plupload.FAILED) {
         this.file.status = plupload.QUEUED;
       }
+      if (uploader.settings.url == undefined) {
+        Ember.merge(uploader.settings, this.settings);
+      }
       uploader.start();
     }
 
